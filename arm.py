@@ -1,5 +1,6 @@
 from dynamixel_hr.dxl.dxlchain import DxlChain
 import math
+import numpy as np
 
 # Dynamixel encoder precision & range
 rads_per_tick = 300.0/1023.0 * math.pi / 180.0
@@ -15,10 +16,6 @@ encoder_offsets = [511, 808, 511, 511]
 # These joint limits are purely based on the amount each servo can rotate
 # before hitting another part of the arm.
 joint_limits = [(0, 1023), (540, 940), (70, 1010), (170, 840)]
-
-# The Z-axis offset is a 'fudge factor' to correct for arm-length errors,
-# and ensure that the pen tip hits the paper
-z_off = -0.2
 
 # Convert an angle from encoder ticks to radians, using the given offset
 # (the encoder position corresponding to an angle of 0)

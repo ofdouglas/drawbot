@@ -9,6 +9,11 @@ import ik
 import arm
 
 
+
+# The Z-axis offset is a 'fudge factor' to correct for arm-length errors,
+# and ensure that the pen tip hits the paper
+z_off = -0.2
+
 # Draw a dot at the given (X, Y) coordinate
 def draw_point(chain, (px, py)):
     theta = arm.get_arm_angles(chain)
@@ -89,7 +94,7 @@ def draw_image(chain):
 
 #   cv2.imshow('edges', edges)
 #   cv2.waitKey(0)
-    print img
+#   print img
 
     for y in range(0, image_height):
         for x in range(0, image_width):

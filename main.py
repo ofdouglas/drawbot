@@ -100,7 +100,6 @@ def draw_image(chain):
 
 def main():
     chain = arm.connect_to_dynamixels()
-            
   # config_motors(chain)
     
   # grid_test(chain)

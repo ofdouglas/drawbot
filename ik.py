@@ -72,13 +72,13 @@ def plan_move(cur_theta, goal_pos):
         # Limit joint angles (based on mechanical limits of the arm)
         for i in range(len(theta)):
             enc = arm.rads_to_encoder(theta[i], arm.encoder_offsets[i])
-            if enc < joint_limits[i][0]:
+            if enc < arm.joint_limits[i][0]:
                 print "Joint " + str(i) + " hit lower limit"
-                theta[i] = 0.75 * arm.encoder_to_rads(joint_limits[i][0],
+                theta[i] = 0.75 * arm.encoder_to_rads(arm.joint_limits[i][0],
                                                   arm.encoder_offsets[i])
-            elif enc > joint_limits[i][1]:
+            elif enc > arm.joint_limits[i][1]:
                 print "Joint " + str(i) + " hit upper limit"
-                theta[i] = 0.75 * arm.encoder_to_rads(joint_limits[i][1],
+                theta[i] = 0.75 * arm.encoder_to_rads(arm.joint_limits[i][1],
                                                   arm.encoder_offsets[i])
             else:
                 theta[i] = theta[i] + d_theta[i]
